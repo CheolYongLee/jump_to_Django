@@ -2,8 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from django.shortcuts import render, get_object_or_404
-from .models import Question
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
+from .models import Question, Answer
 
 def index(request):
     """
@@ -22,3 +23,19 @@ def detail(request, question_id):
     # 없는 데이터를 요청 할 경우 500 오류 페이지가 아닌 "Not Found (404)" 페이지를 리턴하는 함수
     context = {'question': question}
     return render(request, 'pybo/question_detail.html', context)
+
+def answer_create(request, question_id):
+    """
+    pybo 답변등록
+    """
+    question = get_object_or_404(Question, pk=question_id)
+    # 답변을 저장하는 2가지 방법
+    # 첫번째 방법
+    # question.answer_set.create(content=request.POST.get('content'), create_date=timezone.now())
+    # 두번째 방법
+    answer = Answer(question=question, content=request.POST.get('content'), create_date=timezone.now())
+    # redirect = 답변을 생성한 후 질문 상세 화면을 다시 보여주기 위함 / 페이지 이동을 위한 함수
+    # detail 별칭은 question_id가 필요하므로 question.id를 인수로 전달
+    answer.save()
+
+    return redirect('pybo:detail', question_id=question.id)

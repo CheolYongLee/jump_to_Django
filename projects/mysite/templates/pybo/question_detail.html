@@ -1,5 +1,14 @@
+<!-- 질문 상세 템플릿 -->
 <h1>{{ question.subject }}</h1>
 
 <div>
   {{ question.content }}
 </div>
+
+<!-- 답변을 저장할 수 있는 폼(form) -->
+<form action="{% url 'pybo:answer_create' question.id %}" method="post"> <!-- 답변 저장을 위한 URL -->
+  {% csrf_token %} <!-- 보안에 관련된 항목 (form으로 전송한 데이터가 실제 웹 페이지에서 작성한 데이터인지를 판단해 주는 가늠자 역할) -->
+<!--  form 태그 바로 밑에 {% csrf_token %} 태그를 항상 위치시키도록 해야함 (해킹 방지) -->
+  <textarea name="content" id="content" rows="15"></textarea> <!-- 답변의 내용을 입력할 수 있는 텍스트창 -->
+  <input type="submit" value="답변등록"> <!-- 답변을 저장할 수 있는 버튼 추가 -->
+</form>
