@@ -5,6 +5,16 @@
   {{ question.content }}
 </div>
 
+<!-- 등록된 답변을 질문 상세 화면에 표시 -->
+<h5>{{ question.answer_set.count }}개의 답변이 있습니다.</h5>
+<div>
+  <ul>
+  {% for answer in question.answer_set.all %}
+      <li>{{ answer.content }}</li>
+  {% endfor %}
+  </ul>
+</div>
+
 <!-- 답변을 저장할 수 있는 폼(form) -->
 <form action="{% url 'pybo:answer_create' question.id %}" method="post"> <!-- 답변 저장을 위한 URL -->
   {% csrf_token %} <!-- 보안에 관련된 항목 (form으로 전송한 데이터가 실제 웹 페이지에서 작성한 데이터인지를 판단해 주는 가늠자 역할) -->
