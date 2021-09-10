@@ -28,8 +28,13 @@
 <!--  <input type="submit" value="답변등록"> &lt;!&ndash; 답변을 저장할 수 있는 버튼 추가 &ndash;&gt;-->
 <!--</form>-->
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+<!--{% load static %}-->
+<!--<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">-->
+
+{% extends 'base.html' %}
+{% block content %}
+<!-- {% block content %}에서 {% endblock %} 사이에 question_detail.html 에서만 쓰이는 내용을 작성 / base.html 템플릿을 상속받아 표준 HTML문서로 바뀌게 될 것이다. -->
+
 <div class="container my-3">
   <h2 class="border-bottom py-2">{{ question.subject }}</h2>
   <div class="card my-3">
@@ -62,3 +67,4 @@
     <input type="submit" value="답변등록" class="btn btn-primary">
   </form>
 </div>
+{% endblock %}

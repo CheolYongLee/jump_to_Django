@@ -1,5 +1,10 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+<!--{% load static %}-->
+<!--<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">-->
+<!-- 위의 두 줄은 base.html에 있는 내용이므로 삭제함 -->
+
+{% extends 'base.html' %}
+{% block content %}
+<!-- {% block content %}에서 {% endblock %} 사이에 question_list.html 에서만 쓰이는 내용을 작성 / base.html 템플릿을 상속받아 표준 HTML문서로 바뀌게 될 것이다. -->
 
 <!-- 부트스트랩 사용 -->
 <div class="container my-3">
@@ -30,6 +35,7 @@
         </tbody>
     </table>
 </div>
+{% endblock %}
 
 <!-- 초기 모델 -->
 <!--{% if question_list %}-->

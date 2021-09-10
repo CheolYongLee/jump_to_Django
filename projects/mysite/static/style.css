@@ -1,3 +1,4 @@
+/*
 textarea {
     width:100%;
 }
@@ -5,3 +6,6 @@ textarea {
 input[type=submit] {
     margin-top:10px;
 }
+*/
+/* 부트스트랩 적용으로 인해 기존의 내용은 필요가 없어짐
+    이후 부트스트랩으로 표현할 수 없는 스타일을 위해 사용할 예정 */
