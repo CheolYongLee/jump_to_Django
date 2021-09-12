@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Question, Answer
+from .forms import QuestionForm
 
 def index(request):
     """
@@ -37,5 +38,20 @@ def answer_create(request, question_id):
     # redirect = 답변을 생성한 후 질문 상세 화면을 다시 보여주기 위함 / 페이지 이동을 위한 함수
     # detail 별칭은 question_id가 필요하므로 question.id를 인수로 전달
     answer.save()
-
     return redirect('pybo:detail', question_id=question.id)
+
+def question_create(request):
+    """
+    pybo 질문등록
+    """
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.create_date = timezone.now()
+            question.save()
+            return redirect('pybo:index')
+    else:
+        form = QuestionForm()
+    context = {'form': form}
+    return render(request, 'pybo/question_form.html', context)

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+    <form method="post" class="post-form my-3">
+    <!-- form 태그에 action 속성을 지정하지 않았을 시 현재 페이지의 URL이 디폴트 action으로 설정한다. -->
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- {{ form.as_p }}의 form은 question_create 함수에서 전달한 QurstionFrom의 객체 -->
+        <button type="submit" class="btn btn-primary">저장하기</button>
+    </form>
+</div>
+{% endblock %}
