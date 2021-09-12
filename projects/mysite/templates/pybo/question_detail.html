@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- {% block content %}에서 {% endblock %} 사이에 question_detail.html 에서만 쓰이는 내용을 작성 / base.html 템플릿을 상속받아 표준 HTML문서로 바뀌게 될 것이다. -->
+<!-- block content에서 endblock 사이에 question_detail.html 에서만 쓰이는 내용을 작성 / base.html 템플릿을 상속받아 표준 HTML문서로 바뀌게 될 것이다. -->
 
 <div class="container my-3">
   <h2 class="border-bottom py-2">{{ question.subject }}</h2>
@@ -28,6 +28,17 @@
   </div>
   {% endfor %}
   <form action="{% url 'pybo:answer_create' question.id %}" method="post" class="my-3">
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+    {% for field in form %}
+      {% if field.errors %}
+      <strong>{{ field.label }}</strong>
+      {{ field.errors }}
+      {% endif %}
+    {% endfor %}
+    </div>
+    {% endif %}
     <div class="form-group">
       <textarea name="content" id="content" class="form-control" row="10"></textarea>
     </div>
