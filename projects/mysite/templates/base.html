@@ -14,23 +14,23 @@
 <body>
 
 <!-- 네비게이션바 -->
-<nav class="navbar navbar-expend-lg navbar-light bg-light border-bottom">
-    <!-- 좌상단 홈 버튼 생성 -->
-    <a class="navbar-brand" href="{% url 'pybo:index' %}">Pybo</a>
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- 우상단 메뉴 버튼 생성 -->
-    <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item ">
-                <a class="nav-link" href="#">로그인</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
+<!--<nav class="navbar navbar-expend-lg navbar-light bg-light border-bottom">-->
+<!--    &lt;!&ndash; 좌상단 홈 버튼 생성 &ndash;&gt;-->
+<!--    <a class="navbar-brand" href="{% url 'pybo:index' %}">Pybo</a>-->
+<!--    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"-->
+<!--        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    &lt;!&ndash; 우상단 메뉴 버튼 생성 &ndash;&gt;-->
+<!--    <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">-->
+<!--        <ul class="navbar-nav">-->
+<!--            <li class="nav-item ">-->
+<!--                <a class="nav-link" href="#">로그인</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
+{% include "navbar.html" %}
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 {% block content %}
 {% endblock %}
@@ -39,6 +39,5 @@
 <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
 <!-- Bootstrap JS -->
 <script src="{% static 'bootstrap.min.js' %}"></script>
-
 </body>
 </htmlf>
