@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'common.apps.CommonConfig', # 로그인, 로그아웃 기능을 위해 추가
     'pybo.apps.PyboConfig', # 데이터베이스 관련 작업을 위한 클래스 추가
     'django.contrib.admin',
     'django.contrib.auth',

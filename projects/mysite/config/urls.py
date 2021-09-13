@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pybo/', include('pybo.urls')), # pybo 폴더의 urls 파일과 매핑
+    path('common/', include('common.urls')),
 ]
