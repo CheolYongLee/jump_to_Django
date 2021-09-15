@@ -10,6 +10,7 @@ class Question(models.Model):
     # TextField = 글자수 제한 없음
     create_date = models.DateTimeField() # 질문을 작성한 일시
     # DateTimeField = 날짜와 시간에 관계된 속성
+    modify_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self): # id 값 대신 제목을 표시할 수 있다
         return self.subject
@@ -21,3 +22,4 @@ class Answer(models.Model):
     # on_delete=models.CASCADE = 이 답변과 연결된 질문(Question)이 삭제 될 경우 답변(Answer)도 함꼐 삭제된다
     content = models.TextField() # 답변의 내용
     create_date = models.DateTimeField() # 답변을 작성한 일시
+    modify_date = models.DateTimeField(null=True, blank=True)
